@@ -9,38 +9,64 @@
 	<link rel="import" href="bower_components/core-icons/core-icons.html">
 	<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
 	<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+	<link rel="import" href="bower_components/core-item/core-item.html">
 	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/ng-polymer-elements/ng-polymer-elements.min.js"></script>
 	<script src="js/main.js"></script>
+	<style>
+		.holder{
+			display:inline-block;
+			min-width: 250px;
+			margin:20px;
+			border:2px solid black;
+			border-radius:2px;
+		}
+		.header{
+			border-bottom: 2px solid black;
+			padding:10px;
+			padding-bottom: 30px;
+		}
+		.more{
+			float:right;
+		}
+	</style>
 </head>
 
 <body>
-	<div  ng-app="myApp">
-		First Name: <input type="text" ng-model="firstName"><br>
-		Last Name: <input type="text" ng-model="lastName"><br>
-		<br>
-		Full Name: {{firstName + " " + lastName}}
-		<br/>
-		Name: {{ name }}
+	<div  ng-app="myApp" ng-controller="devicesController" horizontal layout start>
 		
-		<core-toolbar class="medium-tall">
-
-		  <paper-icon-button id="navicon"
-			icon="menu"></paper-icon-button>
-
-		  <span flex>Title</span>
-
-		  <paper-icon-button id="morebutton"
-			icon="more-vert"></paper-icon-button>
-
-		  <paper-tabs class="bottom fit" selected="0">
-			<paper-tab>ONE</paper-tab>
-			<paper-tab>TWO</paper-tab>
-		  </paper-tabs>
-		  
-		</core-toolbar>
+		<div class='holder' ng-repeat='x in devices'>
+			<div class="header">
+				<core-item icon="account-circle" class="contact-item">
+				<div flex>
+					<div flex class="name">{{x.deviceName}}</div>
+				</div>
+				<core-icon icon="more-vert"></core-icon>
+				</core-item>
+			</div>
+			<div class="modules">
+				<div class="module" ng-if="x.antiteft == true">
+					<core-item icon="track-changes" class="contact-item"> Anti-theft
+				</div>
+				<div class="module" ng-if="x.privacy == true">
+					<core-item icon="visibility" class="contact-item"> Privacy
+				</div>
+				<div class="module" ng-if="x.settings == true">
+					<core-item icon="settings" class="contact-item"> Settings
+				</div>
+				<div class="module" ng-if="x.vulnerability == true">
+					<core-item icon="system-update-tv" class="contact-item"> Vulnerability
+				</div>
+				<div class="module" ng-if="x.protection == true">
+					<core-item icon="verified-user" class="contact-item"> Protection
+				</div>
+				<div class="module" ng-if="x.optimizer == true">
+					<core-item icon="face-unlock" class="contact-item"> Optimizer
+				</div>
+			</div>
+		</div>
 		
-		<core-ajax url="json/employees.json"
-               handleAs="json"></core-ajax>
+		<core-ajax url="json/devices.json" handleAs="json"></core-ajax>
 	</div>
 	<script>
       // Wait for 'polymer-ready'. Ensures the element is upgraded.

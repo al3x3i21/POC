@@ -1,0 +1,5 @@
+{"devices":[
+    {"deviceName":"Nexus 5", "antiteft":"true", "privacy":"true", "settings":"true", "vulnerability":"false"}, 
+    {"deviceName":"My Dell", "antiteft":"true", "privacy":"true", "settings":"true", "vulnerability":"true"}, 
+	{"deviceName":"Nokia 920", "antiteft":"false", "privacy":"true", "settings":"true", "vulnerability":"false"}, 
+]}
